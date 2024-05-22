@@ -1,0 +1,43 @@
+/* Container for the whole page */
+.community-container {
+    font-family: Arial, sans-serif;
+  }
+  
+  /* Styles for the posts section */
+  .posts-section {
+    margin-bottom: 2rem;
+  }
+  
+  .posts-section h2 {
+    color: #333;
+    font-size: 24px;
+  }
+  
+  /* Styles for individual posts - assuming your Post component has some container element */
+  .post {
+    background-color: #f9f9f9;
+    border-left: 5px solid #007bff;
+    margin: 10px 0;
+    padding: 10px 15px;
+    border-radius: 5px;
+  }
+  
+  /* Styles for the comments section */
+  .comments-section {
+    margin-bottom: 2rem;
+  }
+  
+  .comments-section h2 {
+    color: #333;
+    font-size: 24px;
+  }
+  
+  /* Styles for individual comments - assuming your Comment component has some container element */
+  .comment {
+    background-color: #f9f9f9;
+    border-left: 5px solid #28a745;
+    margin: 10px 0;
+    padding: 10px 15px;
+    border-radius: 5px;
+  }
+  

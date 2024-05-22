@@ -1,6 +1,6 @@
 from django.contrib.auth.models import User
 from rest_framework import serializers
-from .models import Plant
+from .models import Plant, Post, Comment
 
 
 class UserSerializer(serializers.ModelSerializer):
@@ -20,3 +20,16 @@ class PlantSerializer(serializers.ModelSerializer):
         model = Plant
         fields = ["id", "title", "content", "created_at", "author"]
         extra_kwargs = {"author": {"read_only": True}}
+
+
+class PostSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Post
+        fields = ["id", "title", "content", "created_at", "author"]
+
+
+class CommentSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Comment
+        fields = ["id", "content", "created_at", "author", "post"]
+        extra_kwargs = {"author": {"read_only": True}, "post": {"read_only": True}}
