@@ -1,226 +1,198 @@
 body {
-    font-family: 'Arial', sans-serif;
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    background-color: #f4f4f4;
-  }
-  
-  .home-container {
-    padding: 0 20px;
-  }
-  
-  .home-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 20px;
-    background-color: #ffffff;
-    border-bottom: 1px solid #ddd;
-  }
-  
-  .logo-container {
-    display: flex;
-    align-items: center;
-  }
-  
-  .logo {
-    width: 100px;
-    height: auto;
-    margin-right: 10px;
-  }
-  
-  .site-title {
-    font-size: 28px;
-    color: #2e8b57; /* Green text */
-    font-weight: bold;
-  }
-  
-  .nav-links {
-    list-style: none;
-    display: flex;
-    gap: 15px;
-  }
-  
-  .nav-links a {
-    text-decoration: none;
-    color: #2e8b57; /* Green text */
-    font-size: 16px;
-    transition: color 0.3s;
-  }
-  
-  .nav-links a:hover {
-    color: #3cb371; /* Light green on hover */
-  }
-  
-  .nav-links a.active {
-    font-weight: bold;
-    color: #007bff;
-  }
-  
-  .welcome-section {
-    display: flex;
-    align-items: flex-start;
-    padding: 20px;
-    background-color: #ffffff;
-    margin: 20px 0;
-    border-radius: 5px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  }
-  
-  .welcome-text {
-    flex: 1;
-  }
-  
-  .welcome-text h2 {
-    color: #2e8b57; /* Green title */
-    margin-bottom: 10px;
-  }
-  
-  .welcome-text p {
-    color: #666;
-    line-height: 1.6;
-  }
-  
-  .welcome-text .action-link {
-    display: inline-block;
-    margin-top: 10px;
-    color: #007bff;
-    text-decoration: none;
-    transition: color 0.3s;
-  }
-  
-  .welcome-text .action-link:hover {
-    color: #0056b3; /* Darker blue on hover */
-  }
-  
-  .welcome-image {
-    flex-shrink: 0;
-    margin-left: 20px;
-  }
-  
-  .welcome-image img {
-    width: 350px; /* Increased width */
-    height: auto;
-    border-radius: 5px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  }
-  
-  .popular-houseplants, .recent-posts, .top-tips {
-    margin: 20px 0;
-    background-color: #ffffff;
-    padding: 20px;
-    border-radius: 5px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  }
-  
-  .popular-houseplants h3, .recent-posts h3, .top-tips h3 {
-    color: #2e8b57;
-    border-bottom: 2px solid #2e8b57;
-    padding-bottom: 10px;
-  }
-  
-  .plant-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 10px;
-  }
-  
-  .plant-item {
-    background-color: #e9f5e9;
-    padding: 10px;
-    border-radius: 5px;
-    text-align: center;
-    border: 1px solid #ccc;
-    transition: transform 0.3s, box-shadow 0.3s;
-  }
-  
-  .plant-item:hover {
-    transform: scale(1.05);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  }
-  
-  .recent-posts .post-item {
-    background: #f9f9f9;
-    padding: 10px;
-    margin-bottom: 10px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-  }
-  
-  .recent-posts .post-item:hover {
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  }
-  
-  .recent-posts .post-comments {
-    background: #f0f0f0;
-    padding: 10px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-  }
-  
-  .top-tips .tips-content {
-    background: #fcfcfc;
-    padding: 10px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-  }
-  
-  .subscription-section {
-    background: #f9f9f9;
-    padding: 20px;
-    border-top: 1px solid #ddd;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-  }
-  
-  .subscription-content {
-    display: flex;
-    align-items: center;
-    width: 100%;
-  }
-  
-  .subscribe-image {
-    margin-right: 20px;
-    margin-left: 20px;
-  }
-  
-  .subscribe-image img {
-    width: 450px;
-    height: auto;
-    border-radius: 10px;
+  font-family: 'Arial', sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  background-color: #f4f4f4;
+}
 
-  }
-  
-  .subscribe-form {
-    flex-grow: 1;
-  }
-  
-  .subscribe-form p {
-    margin: 0 0 10px;
-    margin-left: 200px;
-  }
-  
-  .subscribe-form input {
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    margin-right: 10px;
-    width: calc(100% - 120px);
-  }
-  
-  .subscribe-form button {
-    padding: 10px 20px;
-    background-color: #2e8b57; /* Green background */
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-  }
-  
-  .subscribe-form button:hover {
-    background-color: #3cb371; /* Light green on hover */
-  }
-  
+.home-container {
+  padding: 0 20px;
+}
+
+.welcome-section {
+  display: flex;
+  align-items: center;
+  justify-content: space-between; /* Adjust the space between elements */
+  padding: 20px;
+  background-color: #ffffff;
+  margin: 20px 0;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.welcome-text {
+  flex: 1;
+  margin-right: 20px; /* Add margin to the right to space out from the image */
+}
+
+.welcome-text h2 {
+  color: #2e8b57; /* Green title */
+  margin-bottom: 10px;
+}
+
+.welcome-text p {
+  color: #666;
+  line-height: 1.6;
+}
+
+.welcome-text .action-button {
+  display: inline-block;
+  margin-top: 10px;
+  padding: 10px 20px;
+  color: #fff;
+  background-color: #2e8b57; 
+  border: none;
+  border-radius: 5px;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.3s;
+}
+
+.welcome-text .action-button:hover {
+  background-color: #3cb371; /* Light green on hover */
+  transform: scale(1.05); /* Slightly enlarge the button on hover */
+}
+
+.welcome-image {
+  flex-shrink: 0;
+  margin-left: 20px;
+}
+
+.welcome-image img {
+  width: 300px; /* Adjusted width */
+  height: auto;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.popular-houseplants, .recent-posts, .top-tips {
+  margin: 20px 0;
+  background-color: #ffffff;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.popular-houseplants h3, .recent-posts h3, .top-tips h3 {
+  color: #2e8b57;
+  border-bottom: 2px solid #2e8b57;
+  padding-bottom: 10px;
+}
+.top-tips .tips-content {
+  background: #fcfcfc;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+
+.top-tips ul {
+  padding-left: 20px;
+}
+
+.top-tips ul li {
+  margin-bottom: 10px;
+  color: #666666;
+}
+.plant-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+}
+
+.plant-item {
+  background-color: #e9f5e9;
+  padding: 10px;
+  border-radius: 5px;
+  text-align: center;
+  border: 1px solid #ccc;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.plant-item:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.recent-posts .post-item {
+  background: #f9f9f9;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+
+.recent-posts .post-item:hover {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.recent-posts .post-comments {
+  background: #f0f0f0;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+
+.top-tips .tips-content {
+  background: #fcfcfc;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+
+.subscription-section {
+  background: #f9f9f9;
+  padding: 20px;
+  border-top: 1px solid #ddd;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.subscription-content {
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.subscribe-image {
+  margin-right: 20px;
+  margin-left: 20px;
+}
+
+.subscribe-image img {
+  width: 450px;
+  height: auto;
+  border-radius: 10px;
+}
+
+.subscribe-form {
+  flex-grow: 1;
+}
+
+.subscribe-form p {
+  margin: 0 0 10px;
+  margin-left: 200px;
+}
+
+.subscribe-form input {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-right: 10px;
+  width: calc(100% - 120px);
+}
+
+.subscribe-form button {
+  padding: 10px 20px;
+  background-color: #2e8b57; /* Green background */
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.subscribe-form button:hover {
+  background-color: #3cb371; /* Light green on hover */
+}

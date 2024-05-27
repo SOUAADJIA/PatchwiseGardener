@@ -42,7 +42,10 @@ function Community() {
                 else alert("Failed to make post.");
                 getPosts();
             })
-            .catch((err) => alert(err));
+            .catch((err) => {
+                console.error("Error creating post:", err);
+                alert(`Error creating post: ${err.response?.data?.message || err.message}`);
+            });
     };
 
     return (

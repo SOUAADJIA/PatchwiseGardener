@@ -1,43 +1,27 @@
-import React from "react"
-import { NavLink } from "react-router-dom"
-import logo from "../assets/logo.png"
-import image1 from "../assets/image1.png"
-import image2 from "../assets/image2.png"
-
-import "../styles/Home.css"
+import React from "react";
+import { NavLink } from "react-router-dom";
+import image1 from "../assets/image1.png";
+import image2 from "../assets/image2.png";
+import MenuBar from "../components/MenuBar"; // Import the MenuBar component
+import "../styles/Home.css";
 
 function Home() {
   return (
     <div className="home-container">
-      <header className="home-header">
-        <div className="logo-container">
-          <img src={logo} alt="Patchwise Gardener Logo" className="logo" />
-          <h1 className="site-title">PatchwiseGardener</h1>
-        </div>
-        <nav>
-          <ul className="nav-links">
-            <li><NavLink exact to="/" activeClassName="active">Home</NavLink></li>
-            <li><NavLink to="/plants" activeClassName="active">Plants</NavLink></li>
-            <li><NavLink to="/mygarden" activeClassName="active">My Garden</NavLink></li>
-            <li><NavLink to="/community" activeClassName="active">Community</NavLink></li>
-            <li><NavLink to="/register" activeClassName="active">Register</NavLink></li>
-            <li><NavLink to="/login" activeClassName="active">Log In</NavLink></li>
-            <li><NavLink to="/logout" activeClassName="active">Log Out</NavLink></li>
-          </ul>
-        </nav>
-      </header>
+      <MenuBar /> {/* Include the MenuBar component */}
       <section className="welcome-section">
         <div className="welcome-text">
           <h2>Cultivate Your Home Green Genius, Wherever You Browse</h2>
           <p>
             Patchwise Gardener is your personalized gardening web application, perfect for home planting enthusiasts. 
-            With intuitive guidance and support, users of all skill levels can virtually simulate their garden 
-            (focus on tracking garden data and information without visual representation for now), easily tracking 
+            With intuitive guidance and support, users of all skill levels can virtually simulate their garden, easily tracking 
             and nurturing their green spaces. Access easy-to-follow care guides tailored for home cultivation, 
             ensuring thriving greenery indoors or outdoors. Plus, Patchwise Gardener adapts to your climate, 
             providing personalized recommendations for optimal gardening success.
           </p>
-          <a href="#" className="action-link">See it in action</a>
+          <NavLink to="/mygarden">
+            <button className="action-button">Welcome! Embark on Your Home Gardening Journey & Virtually Simulate Your Plants !</button>
+          </NavLink>
         </div>
         <div className="welcome-image">
           <img src={image1} alt="Gardening" />
@@ -67,7 +51,17 @@ function Home() {
       <section className="top-tips">
         <h3>Top Tips: Spring Season Houseplant Care</h3>
         <div className="tips-content">
-          Tips content goes here...
+          <p>As the seasons change, so too do your plant needs. Indoor plants are affected by outdoor changes. We’re sharing easy plant care tips and tricks to help your houseplants thrive this spring.</p>
+          <ul>
+            <li><strong>Tip 1:</strong> Water More Frequently - Increase water frequency gradually as sunlight and temperatures rise.</li>
+            <li><strong>Tip 2:</strong> Pull Back On Sunlight - Relocate some plants away from direct sunlight to avoid leaf scorch.</li>
+            <li><strong>Tip 3:</strong> Be Mindful of Temperature - Keep plants in stable temperature conditions, away from drafts.</li>
+            <li><strong>Tip 4:</strong> Prune Lackluster Foliage - Remove wilted leaves to promote new, healthy growth.</li>
+            <li><strong>Tip 5:</strong> Dust Off Leaves - Regularly clean leaves to ensure efficient gas exchange.</li>
+            <li><strong>Tip 6:</strong> Repot Your Plants - Repot every 12 to 18 months to refresh soil nutrients.</li>
+            <li><strong>Tip 7:</strong> Consider Fertilizing - Use fertilizer sparingly to replenish essential nutrients.</li>
+            <li><strong>Tip 8:</strong> Move Plants Outside - Gradually acclimate plants to outdoor conditions when temperatures are consistently above 65°F.</li>
+          </ul>
         </div>
       </section>
       <footer className="subscription-section">
