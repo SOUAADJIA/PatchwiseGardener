@@ -1,10 +1,10 @@
 from django.shortcuts import render
 from django.contrib.auth.models import User
 from rest_framework import generics
-from .serializers import UserSerializer, PlantSerializer, PostSerializer, CommentSerializer
+from .serializers import UserSerializer, PlantSerializer, PostSerializer
 from rest_framework.permissions import IsAuthenticated, AllowAny, IsAuthenticatedOrReadOnly
-from .models import Plant, Post, Comment
-from rest_framework.exceptions import NotFound
+from .models import Plant, Post
+from .permissions import IsAuthorOrReadOnly  # Import the custom permission
 
 # User view
 class CreateUserView(generics.CreateAPIView):
@@ -44,30 +44,4 @@ class PostListCreate(generics.ListCreateAPIView):
 class PostRetrieveUpdateDestroy(generics.RetrieveUpdateDestroyAPIView):
     queryset = Post.objects.all()
     serializer_class = PostSerializer
-    permission_classes = [IsAuthenticatedOrReadOnly]
-
-# Comment views
-class CommentListCreate(generics.ListCreateAPIView):
-    serializer_class = CommentSerializer
-    permission_classes = [IsAuthenticatedOrReadOnly]
-
-    def get_queryset(self):
-        post_id = self.kwargs['post_id']
-        try:
-            post = Post.objects.get(id=post_id)
-            return Comment.objects.filter(post=post)
-        except Post.DoesNotExist:
-            raise NotFound("Post not found")
-
-    def perform_create(self, serializer):
-        post_id = self.kwargs['post_id']
-        try:
-            post = Post.objects.get(id=post_id)
-            serializer.save(author=self.request.user, post=post)
-        except Post.DoesNotExist:
-            raise NotFound("Post not found")
-
-class CommentRetrieveUpdateDestroy(generics.RetrieveUpdateDestroyAPIView):
-    queryset = Comment.objects.all()
-    serializer_class = CommentSerializer
-    permission_classes = [IsAuthenticatedOrReadOnly]
+    permission_classes = [IsAuthenticatedOrReadOnly, IsAuthorOrReadOnly]

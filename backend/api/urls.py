@@ -7,6 +7,4 @@ urlpatterns = [
     path("posts/", views.PostListCreate.as_view(), name="post-list"),
     path("posts/<int:pk>/", views.PostRetrieveUpdateDestroy.as_view(), name="post-detail"),
     path("posts/delete/<int:pk>/", views.PostRetrieveUpdateDestroy.as_view(), name="delete-post"),
-    path("posts/<int:post_id>/comments/", views.CommentListCreate.as_view(), name="comment-list"),
-    path("comments/<int:pk>/", views.CommentRetrieveUpdateDestroy.as_view(), name="comment-detail"),
 ]
