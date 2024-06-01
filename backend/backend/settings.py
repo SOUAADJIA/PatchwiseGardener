@@ -104,6 +104,8 @@ DATABASES = {
     }
 }
 
+PERENUAL_API_KEY = 'sk-LUDY6626f073ca0575222'
+
 
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
