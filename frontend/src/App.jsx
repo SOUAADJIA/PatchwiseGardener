@@ -3,6 +3,7 @@ import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom"
 import Login from "./pages/Login"
 import Register from "./pages/Register"
 import Home from "./pages/Home"
+import Plants from "./pages/Plants"
 import MyGarden from "./pages/MyGarden"
 import NotFound from "./pages/NotFound"
 import ProtectedRoute from "./components/ProtectedRoute"
@@ -42,6 +43,8 @@ function App() {
           }
         />
 
+        <Route path="/plants" element={<Plants />} /> 
+
         <Route path="/login" element={<Login />} />
         <Route path="/logout" element={<Logout />} />
         <Route path="/register" element={<RegisterAndLogout />} />
@@ -51,4 +54,4 @@ function App() {
   )
 }
 
-export default App
+export default App;

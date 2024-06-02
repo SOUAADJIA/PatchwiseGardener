@@ -1,7 +1,7 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
-import logo from "../assets/logo.png"; // Adjust the path as necessary
-import "../styles/MenuBar.css"; // Import the MenuBar CSS
+import logo from "../assets/logo.png"; 
+import "../styles/MenuBar.css"; 
 
 function MenuBar() {
   return (

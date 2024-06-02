@@ -9,8 +9,56 @@ from .permissions import IsAuthorOrReadOnly  # Import the custom permission
 
 import requests
 from rest_framework.response import Response
-from .models import Species
-from .serializers import SpeciesSerializer
+from .models import Species, PlantDisease
+from .serializers import SpeciesSerializer, PlantDiseaseSerializer
+
+
+
+
+# User view
+class CreateUserView(generics.CreateAPIView):
+    queryset = User.objects.all()
+    serializer_class = UserSerializer
+    permission_classes = [AllowAny]
+
+# Plant views
+class PlantListCreate(generics.ListCreateAPIView):
+    serializer_class = PlantSerializer
+    permission_classes = [IsAuthenticated]
+
+    def get_queryset(self):
+        user = self.request.user
+        return Plant.objects.filter(author=user)
+
+    def perform_create(self, serializer):
+        serializer.save(author=self.request.user)
+
+class PlantDelete(generics.DestroyAPIView):
+    serializer_class = PlantSerializer
+    permission_classes = [IsAuthenticated]
+
+    def get_queryset(self):
+        user = self.request.user
+        return Plant.objects.filter(author=user)
+
+# Post views
+class PostListCreate(generics.ListCreateAPIView):
+    queryset = Post.objects.all()
+    serializer_class = PostSerializer
+    permission_classes = [IsAuthenticatedOrReadOnly]
+
+    def perform_create(self, serializer):
+        serializer.save(author=self.request.user)
+
+class PostRetrieveUpdateDestroy(generics.RetrieveUpdateDestroyAPIView):
+    queryset = Post.objects.all()
+    serializer_class = PostSerializer
+    permission_classes = [IsAuthenticatedOrReadOnly, IsAuthorOrReadOnly]
+
+
+
+
+#Species views
 
 class SpeciesListView(generics.ListAPIView):
     queryset = Species.objects.all()
@@ -87,44 +135,38 @@ class SpeciesDetailView(generics.RetrieveAPIView):
         )
 
         return Response(data)
+    
 
-
-# User view
-class CreateUserView(generics.CreateAPIView):
-    queryset = User.objects.all()
-    serializer_class = UserSerializer
+class PlantDiseaseListView(generics.ListAPIView):
+    queryset = PlantDisease.objects.all()
+    serializer_class = PlantDiseaseSerializer
     permission_classes = [AllowAny]
 
-# Plant views
-class PlantListCreate(generics.ListCreateAPIView):
-    serializer_class = PlantSerializer
-    permission_classes = [IsAuthenticated]
+    def get(self, request, *args, **kwargs):
+        api_key = settings.PERENUAL_API_KEY
+        page = request.GET.get('page', 1)
+        q = request.GET.get('q')
+        disease_id = request.GET.get('id')
 
-    def get_queryset(self):
-        user = self.request.user
-        return Plant.objects.filter(author=user)
+        url = f"https://perenual.com/api/pest-disease-list?key={api_key}&page={page}"
+        if q:
+            url += f"&q={q}"
+        if disease_id:
+            url += f"&id={disease_id}"
 
-    def perform_create(self, serializer):
-        serializer.save(author=self.request.user)
+        response = requests.get(url)
+        data = response.json()
 
-class PlantDelete(generics.DestroyAPIView):
-    serializer_class = PlantSerializer
-    permission_classes = [IsAuthenticated]
+        # Optionally, save data to your database
+        for item in data['data']:
+            PlantDisease.objects.update_or_create(
+                id=item['id'],
+                defaults={
+                    'common_name': item['common_name'],
+                    'scientific_name': item['scientific_name'],
+                    'family': item.get('family', None),
+                    # Map other fields as necessary
+                }
+            )
 
-    def get_queryset(self):
-        user = self.request.user
-        return Plant.objects.filter(author=user)
-
-# Post views
-class PostListCreate(generics.ListCreateAPIView):
-    queryset = Post.objects.all()
-    serializer_class = PostSerializer
-    permission_classes = [IsAuthenticatedOrReadOnly]
-
-    def perform_create(self, serializer):
-        serializer.save(author=self.request.user)
-
-class PostRetrieveUpdateDestroy(generics.RetrieveUpdateDestroyAPIView):
-    queryset = Post.objects.all()
-    serializer_class = PostSerializer
-    permission_classes = [IsAuthenticatedOrReadOnly, IsAuthorOrReadOnly]
+        return Response(data['data'])
