@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import api from "../api";
+import MenuBar from "../components/MenuBar"; // Ensure this path is correct
 import "../styles/Plants.css";
 
 function Plants() {
@@ -33,8 +34,8 @@ function Plants() {
   const handleDetailsClick = async (id) => {
     try {
       const response = await api.get(`/api/species/${id}/`);
-      // Display plant details (e.g., in a modal or a separate page)
       console.log("Plant Details:", response.data);
+      window.location.href = `/species/${id}`;
     } catch (error) {
       console.error("Error fetching plant details:", error);
     }
@@ -50,6 +51,7 @@ function Plants() {
 
   return (
     <div>
+      <MenuBar />
       <h1>My Plant Species</h1>
       <div className="plants-list">
         {plants.map((plant) => (
@@ -62,25 +64,13 @@ function Plants() {
         ))}
       </div>
       <div className="pagination">
-        {[...Array(totalPages).keys()].map((page) => {
-          const firstPage = 1;
-          const lastPage = totalPages;
-          const showFirstPages = currentPage <= 3;
-          const showLastPages = currentPage >= totalPages - 2;
-          const showPage = showFirstPages || showLastPages || (page >= currentPage - 1 && page <= currentPage + 1);
-          
-          if (!showPage && !(page === firstPage || page === lastPage)) {
-            return null;
-          }
-
-          return (
-            <span key={page} className={`page-item ${currentPage === page + 1 ? 'active' : ''}`}>
-              <button className="page-link" onClick={() => handlePageChange(page + 1)}>
-                {page + 1}
-              </button>
-            </span>
-          );
-        })}
+        {[...Array(totalPages).keys()].map((page) => (
+          <span key={page} className={`page-item ${currentPage === page + 1 ? 'active' : ''}`}>
+            <button className="page-link" onClick={() => handlePageChange(page + 1)}>
+              {page + 1}
+            </button>
+          </span>
+        ))}
       </div>
     </div>
   );
