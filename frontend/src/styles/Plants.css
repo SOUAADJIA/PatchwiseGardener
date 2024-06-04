@@ -1,52 +1,73 @@
-/* Plants.css */
+/* General styling */
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f9;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Container styling */
+.plants-container {
+  padding: 0 20px;
+}
+
+/* Header styling */
+h1 {
+  font-size: 36px;
+  color: #2e8b57;
+  margin-bottom: 20px;
+  text-align: center;  /* Center the header */
+}
+
+/* Plant card styling */
 .plants-list {
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
   gap: 20px;
-  padding: 20px;
+  justify-content: center;
 }
 
 .plant-card {
-  border: 1px solid #ccc;
-  border-radius: 8px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  background-color: white;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   width: 200px;
-  text-align: center;
   padding: 10px;
-  background-color: #fff;
-  transition: transform 0.2s ease;
+  text-align: center;
+  transition: transform 0.3s, box-shadow 0.3s;
 }
 
 .plant-card:hover {
   transform: scale(1.05);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 .plant-card img {
-  width: 100%;
-  height: auto;
-  border-radius: 8px;
-  margin-bottom: 10px;
+  max-width: 100%;
+  border-radius: 5px;
 }
 
 .plant-card h2 {
-  font-size: 1.2em;
+  font-size: 18px;
   margin: 10px 0;
+  color: #333;
 }
 
 .plant-card p {
-  font-size: 0.9em;
-  color: #666;
-  margin-bottom: 10px;
+  font-size: 14px;
+  color: #777;
+  margin: 5px 0;
 }
 
 .plant-card button {
   background-color: #4CAF50;
   color: white;
   border: none;
-  padding: 10px 20px;
+  padding: 10px;
+  border-radius: 5px;
   cursor: pointer;
-  border-radius: 4px;
   transition: background-color 0.3s ease;
 }
 
@@ -54,26 +75,78 @@
   background-color: #45a049;
 }
 
+/* Modal styling */
+.ReactModal__Overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.75);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.ReactModal__Content {
+  position: relative;
+  background: #fff;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  width: 80%;
+  max-width: 600px;
+  max-height: 80%;
+  overflow-y: auto;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.ReactModal__Content h2 {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.ReactModal__Content p {
+  font-size: 16px;
+  line-height: 1.5;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.ReactModal__Content button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: red;
+  color: white;
+  border: none;
+  padding: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.ReactModal__Content button:hover {
+  background: rgb(139, 111, 0);
+}
+
+/* Pagination styling */
 .pagination {
   display: flex;
   justify-content: center;
   margin: 20px 0;
-  gap: 5px;
-  flex-wrap: wrap;
 }
 
 .page-item {
-  display: flex;
+  margin: 0 5px;
 }
 
 .page-link {
   background-color: #4CAF50;
   color: white;
   border: none;
-  padding: 10px 20px;
-  margin: 0 2px;
+  padding: 10px;
+  border-radius: 5px;
   cursor: pointer;
-  border-radius: 4px;
   transition: background-color 0.3s ease;
 }
 
@@ -83,19 +156,5 @@
 
 .page-item.active .page-link {
   background-color: #2e7d32;
-}
-
-.page-item .page-link:focus {
-  outline: none;
-}
-
-/* Enhanced H1 style */
-h1 {
-  font-size: 2.5em;
-  color: #333;
-  text-align: center;
-  margin-top: 20px;
-  margin-bottom: 30px;
-  font-family: 'Arial', sans-serif;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+  pointer-events: none;
 }

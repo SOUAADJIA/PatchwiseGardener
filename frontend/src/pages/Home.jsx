@@ -2,9 +2,11 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 import image1 from "../assets/image1.png";
 import image2 from "../assets/image2.png";
+import linkedInIcon from "../assets/png-linkedin.png";
+import githubIcon from "../assets/png-github.png";
+import twitterIcon from "../assets/png-twitter.png";
 import MenuBar from "../components/MenuBar"; // Import the MenuBar component
 import "../styles/Home.css";
-
 
 function Home() {
   return (
@@ -87,10 +89,16 @@ function Home() {
         <div className="footer-content">
           <p>You can find the project repository on GitHub: <a href="https://github.com/SOUAADJIA/PatchwiseGardener" target="_blank" rel="noopener noreferrer">Patchwise Gardener Repository</a></p>
           <p>Follow me on social media:</p>
-          <ul>
-            <li><a href="https://www.linkedin.com/in/souaad-ouled-jia-96a15853/" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
-            <li><a href="https://github.com/SOUAADJIA" target="_blank" rel="noopener noreferrer">GitHub</a></li>
-            <li><a href="https://x.com/souad_jia" target="_blank" rel="noopener noreferrer">Twitter</a></li>
+          <ul className="social-icons">
+            <li><a href="https://www.linkedin.com/in/souaad-ouled-jia-96a15853/" target="_blank" rel="noopener noreferrer">
+              <img src={linkedInIcon} alt="LinkedIn" />
+            </a></li>
+            <li><a href="https://github.com/SOUAADJIA" target="_blank" rel="noopener noreferrer">
+              <img src={githubIcon} alt="GitHub" />
+            </a></li>
+            <li><a href="https://x.com/souad_jia" target="_blank" rel="noopener noreferrer">
+              <img src={twitterIcon} alt="Twitter" />
+            </a></li>
           </ul>
         </div>
       </footer>
