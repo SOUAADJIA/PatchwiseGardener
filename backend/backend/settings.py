@@ -104,7 +104,7 @@ DATABASES = {
     }
 }
 
-PERENUAL_API_KEY = 'sk-VOJL665bb597a670a5222'
+PERENUAL_API_KEY = 'sk-vJ4U665e37dbaf8045222'
 
 
 # Password validation

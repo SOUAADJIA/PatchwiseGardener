@@ -135,7 +135,18 @@ class SpeciesDetailView(generics.RetrieveAPIView):
         )
 
         return Response(data)
-    
+
+class SpeciesCareGuideView(generics.RetrieveAPIView):
+    permission_classes = [AllowAny]
+
+    def get(self, request, *args, **kwargs):
+        api_key = settings.PERENUAL_API_KEY
+        species_id = kwargs.get('id')
+        url = f"https://perenual.com/api/species-care-guide-list?key={api_key}&species_id={species_id}"
+        response = requests.get(url)
+        data = response.json()
+
+        return Response(data)
 
 class PlantDiseaseListView(generics.ListAPIView):
     queryset = PlantDisease.objects.all()
