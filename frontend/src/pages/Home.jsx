@@ -5,10 +5,11 @@ import image2 from "../assets/image2.png";
 import MenuBar from "../components/MenuBar"; // Import the MenuBar component
 import "../styles/Home.css";
 
+
 function Home() {
   return (
     <div className="home-container">
-      <MenuBar /> {/* Include the MenuBar component */}
+      <MenuBar />
       <section className="welcome-section">
         <div className="welcome-text">
           <h2>Cultivate Your Home Green Genius, Wherever You Browse</h2>
@@ -20,7 +21,7 @@ function Home() {
             providing personalized recommendations for optimal gardening success.
           </p>
           <NavLink to="/mygarden">
-            <button className="action-button">Welcome! Embark on Your Home Gardening Journey & Virtually Simulate Your Plants !</button>
+            <button className="action-button">Welcome! Embark on Your Home Gardening Journey & Virtually Simulate Your Plants!</button>
           </NavLink>
         </div>
         <div className="welcome-image">
@@ -64,18 +65,33 @@ function Home() {
           </ul>
         </div>
       </section>
-      <footer className="subscription-section">
-        <div className="subscription-content">
-          <div className="subscribe-image">
+      <section className="about-section">
+        <h3>About Patchwise Gardener</h3>
+        <div className="about-content">
+          <div className="about-image">
             <img src={image2} alt="Garden Tools" />
           </div>
-          <div className="subscribe-form">
-            <p>Stay In Touch! Join our Newsletter.</p>
-            <form>
-              <input type="email" placeholder="Enter Email" />
-              <button type="submit">Subscribe</button>
-            </form>
-          </div>
+          <p>
+            The Portfolio Project, <b>PatchwiseGardener</b>, addresses the growing interest in home gardening, particularly after
+            the context of the COVID-19 pandemic and the rise of remote work. With people spending more time at home and
+            seeking fulfilling activities to engage in, gardening has emerged as a popular and rewarding pastime. However,
+            many individuals, especially those new to gardening, face challenges in understanding plant care, planning their
+            gardens, and accessing relevant resources and community support.
+            As a Portfolio Project for <b>Holberton School</b>, Patchwise Gardener showcases not only my technical skills but also 
+            my creativity and dedication. It's a reflection of my commitment to continuous learning and innovation in the 
+            ever-evolving field of web development.
+          </p>
+        </div>
+      </section>
+      <footer className="footer-section">
+        <div className="footer-content">
+          <p>You can find the project repository on GitHub: <a href="https://github.com/SOUAADJIA/PatchwiseGardener" target="_blank" rel="noopener noreferrer">Patchwise Gardener Repository</a></p>
+          <p>Follow me on social media:</p>
+          <ul>
+            <li><a href="https://www.linkedin.com/in/souaad-ouled-jia-96a15853/" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
+            <li><a href="https://github.com/SOUAADJIA" target="_blank" rel="noopener noreferrer">GitHub</a></li>
+            <li><a href="https://x.com/souad_jia" target="_blank" rel="noopener noreferrer">Twitter</a></li>
+          </ul>
         </div>
       </footer>
     </div>
