@@ -1,11 +1,3 @@
-body {
-  font-family: 'Arial', sans-serif;
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  background-color: #f4f4f4;
-}
-
 .home-container {
   padding: 0 20px;
 }
@@ -13,7 +5,7 @@ body {
 .welcome-section {
   display: flex;
   align-items: center;
-  justify-content: space-between; /* Adjust the space between elements */
+  justify-content: space-between;
   padding: 20px;
   background-color: #ffffff;
   margin: 20px 0;
@@ -23,35 +15,38 @@ body {
 
 .welcome-text {
   flex: 1;
-  margin-right: 20px; /* Add margin to the right to space out from the image */
+  margin-right: 20px;
 }
 
 .welcome-text h2 {
-  color: #2e8b57; /* Green title */
+  color: #2e8b57;
   margin-bottom: 10px;
+  font-size: 1.5rem;
 }
 
 .welcome-text p {
   color: #666;
   line-height: 1.6;
+  font-size: 1.2rem;
 }
 
 .welcome-text .action-button {
   display: inline-block;
   margin-top: 10px;
-  padding: 10px 20px;
+  padding: 15px 25px;
   color: #fff;
-  background-color: #2e8b57; 
+  background-color: #2e8b57;
   border: none;
   border-radius: 5px;
   text-decoration: none;
   cursor: pointer;
+  font-size: 1.1rem;
   transition: background-color 0.3s, transform 0.3s;
 }
 
 .welcome-text .action-button:hover {
-  background-color: #3cb371; /* Light green on hover */
-  transform: scale(1.05); /* Slightly enlarge the button on hover */
+  background-color: #3cb371;
+  transform: scale(1.05);
 }
 
 .welcome-image {
@@ -60,13 +55,15 @@ body {
 }
 
 .welcome-image img {
-  width: 300px; /* Adjusted width */
+  width: 400px;
   height: auto;
   border-radius: 5px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-.popular-houseplants, .recent-posts, .top-tips {
+.popular-houseplants,
+.recent-posts,
+.top-tips {
   margin: 20px 0;
   background-color: #ffffff;
   padding: 20px;
@@ -74,11 +71,14 @@ body {
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-.popular-houseplants h3, .recent-posts h3, .top-tips h3 {
+.popular-houseplants h3,
+.recent-posts h3,
+.top-tips h3 {
   color: #2e8b57;
   border-bottom: 2px solid #2e8b57;
   padding-bottom: 10px;
 }
+
 .top-tips .tips-content {
   background: #fcfcfc;
   padding: 10px;
@@ -94,6 +94,7 @@ body {
   margin-bottom: 10px;
   color: #666666;
 }
+
 .plant-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -140,59 +141,87 @@ body {
   border-radius: 5px;
 }
 
-.subscription-section {
-  background: #f9f9f9;
+.about-section {
+  margin: 20px 0;
+  background-color: #ffffff;
   padding: 20px;
-  border-top: 1px solid #ddd;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-.subscription-content {
-  display: flex;
-  align-items: center;
-  width: 100%;
+.about-section h3 {
+  color: #2e8b57;
+  border-bottom: 2px solid #2e8b57;
+  padding-bottom: 10px;
 }
 
-.subscribe-image {
+.about-content {
+  display: flex;
+  align-items: flex-start;
+}
+
+.about-image {
   margin-right: 20px;
-  margin-left: 20px;
 }
 
-.subscribe-image img {
-  width: 450px;
+.about-image img {
+  width: 400px; /* Increased width */
   height: auto;
-  border-radius: 10px;
-}
-
-.subscribe-form {
-  flex-grow: 1;
-}
-
-.subscribe-form p {
-  margin: 0 0 10px;
-  margin-left: 200px;
-}
-
-.subscribe-form input {
-  padding: 10px;
-  border: 1px solid #ccc;
   border-radius: 5px;
-  margin-right: 10px;
-  width: calc(100% - 120px);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-.subscribe-form button {
-  padding: 10px 20px;
-  background-color: #2e8b57; /* Green background */
-  color: #fff;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: background-color 0.3s;
+.about-content p {
+  color: #666;
+  line-height: 1.6;
+  font-size: 1.2rem; /* Adjust as needed */
+  margin-bottom: 10px; /* Adjust as needed */
 }
 
-.subscribe-form button:hover {
-  background-color: #3cb371; /* Light green on hover */
+.footer-section {
+  background-color: #f1f1f1;
+  padding: 20px;
+  text-align: center;
+  border-top: 1px solid #ddd;
+}
+
+.footer-content {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.footer-content p {
+  margin: 5px 0;
+  color: #555;
+}
+
+.footer-content a {
+  color: #2e8b57;
+  text-decoration: none;
+}
+
+.footer-content a:hover {
+  text-decoration: underline;
+}
+
+.social-icons {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+}
+
+.social-icons li {
+  margin: 0 10px;
+}
+
+.social-icons img {
+  width: 24px;
+  height: 24px;
+  transition: transform 0.3s;
+}
+
+.social-icons img:hover {
+  transform: scale(1.1);
 }
