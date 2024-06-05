@@ -1,0 +1,68 @@
+/* FAQ.css */
+
+/* Container for the FAQ page */
+.faq-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  /* Styling for the FAQ cards */
+  .faq-card {
+    margin-bottom: 20px;
+    padding: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  /* Pagination section */
+  .pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  
+  .pagination button {
+    padding: 8px 16px;
+    margin: 0 5px;
+    border: 1px solid #007bff;
+    background-color: #007bff;
+    color: #fff;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .pagination button:hover {
+    background-color: #0056b3;
+  }
+  
+  .pagination button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+  }
+  
+  /* FAQ list */
+  .faq-list {
+    margin-bottom: 20px;
+  }
+  
+  /* Style for FAQ question */
+  .faq-card h2 {
+    margin-top: 0;
+    margin-bottom: 10px;
+  }
+  
+  /* Style for FAQ answer */
+  .faq-card p {
+    margin-top: 0;
+    margin-bottom: 10px;
+  }
+  
+  /* Style for FAQ images */
+  .faq-card img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 5px;
+  }
+  
