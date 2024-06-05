@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import api from "../api";
-import MenuBar from "../components/MenuBar";
 import Modal from "react-modal";
 import "../styles/Plants.css";
 
@@ -58,7 +57,6 @@ function Plants() {
 
   return (
     <div className="plants-container">
-      <MenuBar />
       <h1>My Plant Species</h1>
       <div className="plants-list">
         {plants.map((plant) => (

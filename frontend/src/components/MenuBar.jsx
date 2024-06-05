@@ -14,9 +14,10 @@ function MenuBar() {
         <li><NavLink exact to="/" activeClassName="active">Home</NavLink></li>
         <li><NavLink to="/plants" activeClassName="active">Plants</NavLink></li>
         <li><NavLink to="/mygarden" activeClassName="active">My Garden</NavLink></li>
+        <li><NavLink to="/plant-disease" activeClassName="active">Plant Disease</NavLink></li>
+        <li><NavLink to="/faq" activeClassName="active">FAQ</NavLink></li>
         <li><NavLink to="/community" activeClassName="active">Community</NavLink></li>
-        <li><NavLink to="/register" activeClassName="active">Register</NavLink></li>
-        <li><NavLink to="/login" activeClassName="active">Log In</NavLink></li>
+        <li><NavLink to="/login" activeClassName="active" className="login-button">Log In</NavLink></li>
         <li><NavLink to="/logout" activeClassName="active">Log Out</NavLink></li>
       </ul>
     </div>
