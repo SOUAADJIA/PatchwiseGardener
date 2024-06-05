@@ -1,0 +1,55 @@
+/* PlantDisease.css */
+
+.disease-container {
+    max-width: 1000px; /* Increased max-width */
+    margin: 20px auto; /* Added margin */
+    padding: 30px; /* Increased padding */
+    border: 2px solid #ccc; /* Increased border */
+    border-radius: 10px; /* Added border radius */
+  }
+  
+  .disease-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+  }
+  
+  .disease-card {
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    padding: 20px;
+    border-radius: 5px; /* Added border radius */
+  }
+  
+  .disease-card h2 {
+    margin-top: 0;
+  }
+  
+  .disease-card p {
+    margin: 5px 0;
+  }
+  
+  .disease-card img {
+    max-width: 100%;
+    height: auto;
+  }
+  
+  .pagination {
+    margin-top: 20px;
+  }
+  
+  .pagination button {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-right: 10px;
+  }
+  
+  .pagination button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+  }
+  

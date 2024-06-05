@@ -11,7 +11,7 @@ function Plants() {
   const [error, setError] = useState(null);
   const [currentPage, setCurrentPage] = useState(1);
   const [selectedSpecies, setSelectedSpecies] = useState(null);
-  const itemsPerPage = 100;
+  const itemsPerPage = 30;
   const totalPages = Math.ceil(3000 / itemsPerPage);
 
   useEffect(() => {

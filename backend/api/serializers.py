@@ -1,6 +1,6 @@
 from django.contrib.auth.models import User
 from rest_framework import serializers
-from .models import Plant, Post, Species, PlantDisease
+from .models import Plant, Post, Species, PlantDisease, FAQ
 
 class UserSerializer(serializers.ModelSerializer):
     email = serializers.EmailField(required=True)
@@ -59,10 +59,12 @@ class SpeciesSerializer(serializers.ModelSerializer):
             'images'
         ]
 
-
 class PlantDiseaseSerializer(serializers.ModelSerializer):
     class Meta:
         model = PlantDisease
-        fields = ['id', 'common_name', 'scientific_name', 'family', 'description', 'solution']
+        fields = ['id', 'common_name', 'scientific_name', 'description', 'symptoms', 'control_methods']
 
-
+class FAQSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = FAQ
+        fields = ['id', 'question', 'answer']
