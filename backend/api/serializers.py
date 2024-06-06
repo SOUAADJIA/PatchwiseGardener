@@ -1,6 +1,6 @@
 from django.contrib.auth.models import User
 from rest_framework import serializers
-from .models import Plant, Post, Species, PlantDisease, FAQ
+from .models import Plant, Post, Comment, Species, PlantDisease, FAQ
 
 class UserSerializer(serializers.ModelSerializer):
     email = serializers.EmailField(required=True)
@@ -32,6 +32,14 @@ class PostSerializer(serializers.ModelSerializer):
     class Meta:
         model = Post
         fields = ["id", "title", "content", "created_at", "author"]
+
+class CommentSerializer(serializers.ModelSerializer):
+    author = serializers.ReadOnlyField(source='author.username')
+    post = serializers.PrimaryKeyRelatedField(queryset=Post.objects.all())
+
+    class Meta:
+        model = Comment
+        fields = ["id", "post", "author", "content", "created_at"]
 
 
 class SpeciesSerializer(serializers.ModelSerializer):

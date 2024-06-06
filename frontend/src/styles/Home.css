@@ -61,7 +61,50 @@
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-.popular-houseplants,
+.popular-links {
+  text-align: left; /* Align left */
+  margin: 20px 0;
+  background-color: #ffffff;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.popular-links h3 {
+  color: #2e8b57;
+  border-bottom: 2px solid #2e8b57;
+  padding-bottom: 10px;
+}
+
+.link-grid {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.link-item {
+  text-align: center;
+}
+
+.link-item img {
+  width: 550px; /* Increased width */
+  height: 300px; /* Increased height */
+  border-radius: 10px;
+  transition: transform 0.2s;
+}
+
+.link-item img:hover {
+  transform: scale(1.05);
+}
+.link-content {
+  text-align: center;
+}
+
+.link-image {
+  width: 100px; /* Adjust the width as needed */
+  height: auto; /* Maintain aspect ratio */
+  margin: 0 auto; /* Center the image */
+}
 .recent-posts,
 .top-tips {
   margin: 20px 0;
@@ -71,48 +114,11 @@
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-.popular-houseplants h3,
 .recent-posts h3,
 .top-tips h3 {
   color: #2e8b57;
   border-bottom: 2px solid #2e8b57;
   padding-bottom: 10px;
-}
-
-.top-tips .tips-content {
-  background: #fcfcfc;
-  padding: 10px;
-  border: 1px solid #ddd;
-  border-radius: 5px;
-}
-
-.top-tips ul {
-  padding-left: 20px;
-}
-
-.top-tips ul li {
-  margin-bottom: 10px;
-  color: #666666;
-}
-
-.plant-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 10px;
-}
-
-.plant-item {
-  background-color: #e9f5e9;
-  padding: 10px;
-  border-radius: 5px;
-  text-align: center;
-  border: 1px solid #ccc;
-  transition: transform 0.3s, box-shadow 0.3s;
-}
-
-.plant-item:hover {
-  transform: scale(1.05);
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 .recent-posts .post-item {
@@ -139,6 +145,15 @@
   padding: 10px;
   border: 1px solid #ddd;
   border-radius: 5px;
+}
+
+.top-tips ul {
+  padding-left: 20px;
+}
+
+.top-tips ul li {
+  margin-bottom: 10px;
+  color: #666666;
 }
 
 .about-section {

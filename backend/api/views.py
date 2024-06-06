@@ -2,9 +2,9 @@ from django.shortcuts import render
 from django.conf import settings
 from django.contrib.auth.models import User
 from rest_framework import generics
-from .serializers import UserSerializer, PlantSerializer, PostSerializer
+from .serializers import UserSerializer, PlantSerializer, PostSerializer, CommentSerializer
 from rest_framework.permissions import IsAuthenticated, AllowAny, IsAuthenticatedOrReadOnly
-from .models import Plant, Post
+from .models import Plant, Post, Comment
 from .permissions import IsAuthorOrReadOnly  # Import the custom permission
 
 import requests
@@ -55,7 +55,28 @@ class PostRetrieveUpdateDestroy(generics.RetrieveUpdateDestroyAPIView):
     serializer_class = PostSerializer
     permission_classes = [IsAuthenticatedOrReadOnly, IsAuthorOrReadOnly]
 
+    def perform_update(self, serializer):
+        serializer.save(author=self.request.user)
 
+
+# Comment views
+class CommentListCreate(generics.ListCreateAPIView):
+    serializer_class = CommentSerializer
+    permission_classes = [IsAuthenticatedOrReadOnly]
+
+    def get_queryset(self):
+        post_id = self.request.query_params.get('post_id', None)
+        if post_id is not None:
+            return Comment.objects.filter(post_id=post_id)
+        return Comment.objects.all()
+
+    def perform_create(self, serializer):
+        serializer.save(author=self.request.user)
+
+class CommentRetrieveUpdateDestroy(generics.RetrieveUpdateDestroyAPIView):
+    queryset = Comment.objects.all()
+    serializer_class = CommentSerializer
+    permission_classes = [IsAuthenticatedOrReadOnly, IsAuthorOrReadOnly]
 
 
 #Species views
