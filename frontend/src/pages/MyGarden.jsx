@@ -49,7 +49,7 @@ function MyGarden() {
     return (
         <div>
             <div>
-                <h2>Plants</h2>
+                <h1>My Garden Plants</h1>
                 {plants.map((plant) => (
                     <Plant plant={plant} onDelete={deletePlant} key={plant.id} />
                 ))}

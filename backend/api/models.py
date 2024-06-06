@@ -21,6 +21,16 @@ class Post(models.Model):
 
     def __str__(self):
         return self.title
+    
+class Comment(models.Model):
+    post = models.ForeignKey(Post, on_delete=models.CASCADE, related_name="comments")
+    author = models.ForeignKey(User, on_delete=models.CASCADE, related_name="comments")
+    content = models.TextField()
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return f"Comment by {self.author.username} on {self.post.title}"
+
 
 class Species(models.Model):
     common_name = models.CharField(max_length=255)
@@ -47,12 +57,17 @@ class Species(models.Model):
     
 class PlantDisease(models.Model):
     common_name = models.CharField(max_length=255)
-    scientific_name = models.CharField(max_length=255)
-    family = models.CharField(max_length=255, blank=True, null=True)
+    scientific_name = models.CharField(max_length=255, blank=True, null=True)
     description = models.TextField(blank=True, null=True)
-    solution = models.TextField(blank=True, null=True)
-    # Add any other fields related to plant diseases here
+    symptoms = models.TextField(blank=True, null=True)
+    control_methods = models.TextField(blank=True, null=True)
 
     def __str__(self):
         return self.common_name
-    
+
+class FAQ(models.Model):
+    question = models.CharField(max_length=255)
+    answer = models.TextField()
+
+    def __str__(self):
+        return self.question

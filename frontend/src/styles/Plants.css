@@ -126,18 +126,20 @@ h1 {
 }
 
 .ReactModal__Content button:hover {
-  background: rgb(139, 111, 0);
+  background: rgb(255, 204, 0);
 }
 
 /* Pagination styling */
 .pagination {
   display: flex;
-  justify-content: center;
+  flex-wrap: wrap;  /* Allow wrapping to the next line */
+  justify-content: center;  /* Center the pagination */
   margin: 20px 0;
+  gap: 5px;  /* Add space between buttons */
 }
 
 .page-item {
-  margin: 0 5px;
+  margin: 0;
 }
 
 .page-link {

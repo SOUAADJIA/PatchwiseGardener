@@ -2,15 +2,15 @@ from django.shortcuts import render
 from django.conf import settings
 from django.contrib.auth.models import User
 from rest_framework import generics
-from .serializers import UserSerializer, PlantSerializer, PostSerializer
+from .serializers import UserSerializer, PlantSerializer, PostSerializer, CommentSerializer
 from rest_framework.permissions import IsAuthenticated, AllowAny, IsAuthenticatedOrReadOnly
-from .models import Plant, Post
+from .models import Plant, Post, Comment
 from .permissions import IsAuthorOrReadOnly  # Import the custom permission
 
 import requests
 from rest_framework.response import Response
-from .models import Species, PlantDisease
-from .serializers import SpeciesSerializer, PlantDiseaseSerializer
+from .models import Species, PlantDisease, FAQ
+from .serializers import SpeciesSerializer, PlantDiseaseSerializer, FAQSerializer
 
 
 
@@ -55,7 +55,28 @@ class PostRetrieveUpdateDestroy(generics.RetrieveUpdateDestroyAPIView):
     serializer_class = PostSerializer
     permission_classes = [IsAuthenticatedOrReadOnly, IsAuthorOrReadOnly]
 
+    def perform_update(self, serializer):
+        serializer.save(author=self.request.user)
 
+
+# Comment views
+class CommentListCreate(generics.ListCreateAPIView):
+    serializer_class = CommentSerializer
+    permission_classes = [IsAuthenticatedOrReadOnly]
+
+    def get_queryset(self):
+        post_id = self.request.query_params.get('post_id', None)
+        if post_id is not None:
+            return Comment.objects.filter(post_id=post_id)
+        return Comment.objects.all()
+
+    def perform_create(self, serializer):
+        serializer.save(author=self.request.user)
+
+class CommentRetrieveUpdateDestroy(generics.RetrieveUpdateDestroyAPIView):
+    queryset = Comment.objects.all()
+    serializer_class = CommentSerializer
+    permission_classes = [IsAuthenticatedOrReadOnly, IsAuthorOrReadOnly]
 
 
 #Species views
@@ -135,19 +156,9 @@ class SpeciesDetailView(generics.RetrieveAPIView):
         )
 
         return Response(data)
+    
 
-class SpeciesCareGuideView(generics.RetrieveAPIView):
-    permission_classes = [AllowAny]
-
-    def get(self, request, *args, **kwargs):
-        api_key = settings.PERENUAL_API_KEY
-        species_id = kwargs.get('id')
-        url = f"https://perenual.com/api/species-care-guide-list?key={api_key}&species_id={species_id}"
-        response = requests.get(url)
-        data = response.json()
-
-        return Response(data)
-
+# Plant Disease views
 class PlantDiseaseListView(generics.ListAPIView):
     queryset = PlantDisease.objects.all()
     serializer_class = PlantDiseaseSerializer
@@ -157,27 +168,47 @@ class PlantDiseaseListView(generics.ListAPIView):
         api_key = settings.PERENUAL_API_KEY
         page = request.GET.get('page', 1)
         q = request.GET.get('q')
-        disease_id = request.GET.get('id')
 
         url = f"https://perenual.com/api/pest-disease-list?key={api_key}&page={page}"
         if q:
             url += f"&q={q}"
-        if disease_id:
-            url += f"&id={disease_id}"
 
         response = requests.get(url)
         data = response.json()
 
-        # Optionally, save data to your database
         for item in data['data']:
-            PlantDisease.objects.update_or_create(
-                id=item['id'],
-                defaults={
-                    'common_name': item['common_name'],
-                    'scientific_name': item['scientific_name'],
-                    'family': item.get('family', None),
-                    # Map other fields as necessary
-                }
+            PlantDisease.objects.get_or_create(
+                common_name=item['common_name'],
+                scientific_name=item.get('scientific_name', None),
+                description=item.get('description', None),
+                symptoms=item.get('symptoms', None),
+                control_methods=item.get('control_methods', None),
+            )
+
+        return Response(data['data'])
+
+# FAQ views
+class FAQListView(generics.ListAPIView):
+    queryset = FAQ.objects.all()
+    serializer_class = FAQSerializer
+    permission_classes = [AllowAny]
+
+    def get(self, request, *args, **kwargs):
+        api_key = settings.PERENUAL_API_KEY
+        page = request.GET.get('page', 1)
+        q = request.GET.get('q')
+
+        url = f"https://perenual.com/api/article-faq-list?key={api_key}&page={page}"
+        if q:
+            url += f"&q={q}"
+
+        response = requests.get(url)
+        data = response.json()
+
+        for item in data['data']:
+            FAQ.objects.get_or_create(
+                question=item['question'],
+                answer=item['answer']
             )
 
         return Response(data['data'])

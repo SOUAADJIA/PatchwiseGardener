@@ -2,6 +2,8 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 import image1 from "../assets/image1.png";
 import image2 from "../assets/image2.png";
+import diseaseImage from "../assets/disease.png";
+import faqImage from "../assets/faq.png";
 import linkedInIcon from "../assets/png-linkedin.png";
 import githubIcon from "../assets/png-github.png";
 import twitterIcon from "../assets/png-twitter.png";
@@ -28,26 +30,61 @@ function Home() {
           <img src={image1} alt="Gardening" />
         </div>
       </section>
-      <section className="popular-houseplants">
-        <h3>Popular Houseplants</h3>
-        <div className="plant-grid">
-          <div className="plant-item">Plant 1</div>
-          <div className="plant-item">Plant 2</div>
-          <div className="plant-item">Plant 3</div>
-          <div className="plant-item">Plant 4</div>
+      
+      <section className="popular-links">
+        <h3>Explore More</h3>
+        <div className="link-grid">
+          <div className="link-item">
+            <NavLink to="/plant-disease">
+              <img src={diseaseImage} alt="Disease" />
+              <p>Disease</p>
+            </NavLink>
+          </div>
+          <div className="link-item">
+            <NavLink to="/faq">
+              <img src={faqImage} alt="FAQ" />
+              <p>FAQ</p>
+            </NavLink>
+          </div>
         </div>
       </section>
+      
       <section className="recent-posts">
         <h3>Recent Posts</h3>
         <div className="post-item">
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-          <p>- Kenny Bostick</p>
+          <p>
+            <b>Do Plants Sleep? (Understanding Sleep-Like Behavior in Plants) </b>
+          </p>
+            
+          <p>Plants don’t sleep but do show a certain behavior that resembles sleep in animals.
+          Plants will stop photosynthesizing and most plants will close their stomata. 
+          However, plants still stay active during the night and some plants will even open their stomata at night.
+          </p>
+          <p>- Souaad OULED-JIA</p>
         </div>
         <div className="post-comments">
           Comments
         </div>
-        <div className="post-item">Item Three</div>
-        <div className="post-item">Item Four</div>
+        <div className="post-item">During the night, there are metabolic changes in the plant. Plants have photosynthesized during 
+        the day and will start consuming the energy that was stored during the day.</div>
+        <div className="post-item">Cool</div>
+        <div className="post-item">
+        <p>
+            <b>Do Plants Hear? (Understanding Plant Hearing)s </b>
+          </p>
+            
+          <p>Plants don’t have external or internal ears but they can still hear. They use the sound 
+            vibrations in the air or soil to sense their surroundings. Scientific research suggests 
+            that plants can hear for example running water, pests, pollinators, and possibly even other
+             plants.
+          </p>
+          <p>- Test</p>
+        </div>
+        <div className="post-comments">
+          Comments
+        </div>
+        <div className="post-item">Wow so amazing!</div>
+        <div className="post-item">So funny</div>
       </section>
       <section className="top-tips">
         <h3>Top Tips: Spring Season Houseplant Care</h3>
