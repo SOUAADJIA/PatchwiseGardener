@@ -1,0 +1,38 @@
+/* Comment.css */
+.comment-container {
+    margin-bottom: 20px;
+  }
+  
+  .comment-container textarea {
+    width: 100%;
+    height: 100px;
+    margin-bottom: 10px;
+  }
+  
+  .comment-container button {
+    margin-right: 10px;
+    cursor: pointer;
+  }
+  
+  .comment-container button.delete-comment {
+    color: white;
+    background-color: red;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+  }
+  
+  .comment-container button.edit-comment {
+    color: white;
+    background-color: dodgerblue;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+  }
+  
+  .comment-author,
+  .comment-date {
+    margin-top: 5px;
+    font-style: italic;
+  }
+  

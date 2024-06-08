@@ -3,8 +3,8 @@ from . import views
 from .views import SpeciesListView, SpeciesDetailView, PlantDiseaseListView, FAQListView
 
 urlpatterns = [
-    path("plants/", views.PlantListCreate.as_view(), name="plant-list"),
-    path("plants/delete/<int:pk>/", views.PlantDelete.as_view(), name="delete-plant"),
+    path("plants/", views.PlantListCreate.as_view(), name="list-create-plant"),
+    path("plants/<int:pk>/", views.PlantRetrieveUpdateDestroy.as_view(), name="retrieve-update-destroy-plant"),
     path("posts/", views.PostListCreate.as_view(), name="post-list"),
     path("posts/<int:pk>/", views.PostRetrieveUpdateDestroy.as_view(), name="post-detail"),
     path("posts/delete/<int:pk>/", views.PostRetrieveUpdateDestroy.as_view(), name="delete-post"),

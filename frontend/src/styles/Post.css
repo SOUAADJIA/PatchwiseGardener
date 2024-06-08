@@ -1,78 +1,41 @@
-/* Container for individual post */
+/* Post.css */
 .post-container {
-  padding: 20px;
-  margin: 20px 0;
-  border: 1px solid #ddd;
-  border-radius: 10px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  background-color: #fff;
-  transition: box-shadow 0.3s, border-color 0.3s;
+  margin-bottom: 20px;
 }
 
-.post-container:hover {
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  border-color: #0d9b2e;
-}
-
-/* Post title */
-.post-title {
-  color: #0d9b2e;
-  font-size: 1.5rem;
+.post-container input[type="text"],
+.post-container textarea {
+  width: 100%;
   margin-bottom: 10px;
-  border-bottom: 2px solid #0d9b2e;
-  padding-bottom: 5px;
 }
 
-/* Post content */
-.post-content {
-  color: #555;
-  font-size: 1rem;
-  line-height: 1.6;
-  margin-bottom: 15px;
-}
-
-/* Post date */
-.post-date {
-  color: #999;
-  font-size: 0.9rem;
-  margin-bottom: 15px;
-  display: block;
-}
-
-/* Delete button */
-.delete-button {
-  background-color: #f44336; /* Red */
-  color: white;
-  border: none;
-  padding: 10px 20px;
-  border-radius: 5px;
+.post-container button {
+  margin-right: 10px;
   cursor: pointer;
-  font-size: 0.9rem;
-  transition: background-color 0.3s, transform 0.3s;
-  display: inline-block;
 }
 
-.delete-button:hover {
-  background-color: #d32f2f; /* Darker red */
-  transform: scale(1.05);
+.post-container button.delete-button {
+  color: white;
+  background-color: red;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 5px;
 }
 
-/* Additional styling for responsiveness */
-@media (max-width: 600px) {
-  .post-container {
-      padding: 15px;
-  }
+.post-container button.edit-button {
+  color: white;
+  background-color: dodgerblue;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 5px;
+}
 
-  .post-title {
-      font-size: 1.3rem;
-  }
+.post-date,
+.post-author {
+  margin-top: 5px;
+  font-style: italic;
+}
 
-  .post-content {
-      font-size: 0.95rem;
-  }
-
-  .delete-button {
-      padding: 8px 16px;
-      font-size: 0.85rem;
-  }
+.post-container .post-title {
+  font-weight: bold; /* Make post titles bold */
 }

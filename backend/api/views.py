@@ -13,8 +13,6 @@ from .models import Species, PlantDisease, FAQ
 from .serializers import SpeciesSerializer, PlantDiseaseSerializer, FAQSerializer
 
 
-
-
 # User view
 class CreateUserView(generics.CreateAPIView):
     queryset = User.objects.all()
@@ -33,9 +31,9 @@ class PlantListCreate(generics.ListCreateAPIView):
     def perform_create(self, serializer):
         serializer.save(author=self.request.user)
 
-class PlantDelete(generics.DestroyAPIView):
+class PlantRetrieveUpdateDestroy(generics.RetrieveUpdateDestroyAPIView):
     serializer_class = PlantSerializer
-    permission_classes = [IsAuthenticated]
+    permission_classes = [IsAuthenticated, IsAuthorOrReadOnly]
 
     def get_queryset(self):
         user = self.request.user
@@ -55,17 +53,13 @@ class PostRetrieveUpdateDestroy(generics.RetrieveUpdateDestroyAPIView):
     serializer_class = PostSerializer
     permission_classes = [IsAuthenticatedOrReadOnly, IsAuthorOrReadOnly]
 
-    def perform_update(self, serializer):
-        serializer.save(author=self.request.user)
-
-
 # Comment views
 class CommentListCreate(generics.ListCreateAPIView):
     serializer_class = CommentSerializer
     permission_classes = [IsAuthenticatedOrReadOnly]
 
     def get_queryset(self):
-        post_id = self.request.query_params.get('post_id', None)
+        post_id = self.request.query_params.get('post_id')
         if post_id is not None:
             return Comment.objects.filter(post_id=post_id)
         return Comment.objects.all()
@@ -77,7 +71,6 @@ class CommentRetrieveUpdateDestroy(generics.RetrieveUpdateDestroyAPIView):
     queryset = Comment.objects.all()
     serializer_class = CommentSerializer
     permission_classes = [IsAuthenticatedOrReadOnly, IsAuthorOrReadOnly]
-
 
 #Species views
 

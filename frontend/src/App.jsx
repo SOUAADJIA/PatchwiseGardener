@@ -31,12 +31,11 @@ function App() {
   }, []);
 
   return (
-    <BrowserRouter>
-      <MenuBar/>
+    <BrowserRouter basename="/PatchwiseGardener">
+      <MenuBar />
       <Routes>
         <Route path="/" element={<Navigate to="/home" />} />
         <Route path="/home" element={<Home />} />
-        <Route path="/PatchwiseGardener/" element={<Home />} />
         <Route
           path="/mygarden"
           element={

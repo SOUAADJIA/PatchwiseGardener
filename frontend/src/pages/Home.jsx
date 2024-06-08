@@ -70,7 +70,7 @@ function Home() {
         <div className="post-item">Cool</div>
         <div className="post-item">
         <p>
-            <b>Do Plants Hear? (Understanding Plant Hearing)s </b>
+            <b>Do Plants Hear? (Understanding Plant Hearing)</b>
           </p>
             
           <p>Plants don’t have external or internal ears but they can still hear. They use the sound 

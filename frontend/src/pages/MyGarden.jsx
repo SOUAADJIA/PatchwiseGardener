@@ -1,7 +1,7 @@
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import api from "../api";
-import Plant from "../components/Plant"
-import "../styles/MyGarden.css"
+import Plant from "../components/Plant";
+import "../styles/MyGarden.css";
 
 function MyGarden() {
     const [plants, setPlants] = useState([]);
@@ -25,7 +25,7 @@ function MyGarden() {
 
     const deletePlant = (id) => {
         api
-            .delete(`/api/plants/delete/${id}/`)
+            .delete(`/api/plants/${id}/`)
             .then((res) => {
                 if (res.status === 204) alert("Plant deleted!");
                 else alert("Failed to delete plant.");
@@ -39,8 +39,25 @@ function MyGarden() {
         api
             .post("/api/plants/", { content, title })
             .then((res) => {
-                if (res.status === 201) alert("Plant created!");
-                else alert("Failed to make plant.");
+                if (res.status === 201) {
+                    alert("Plant created!");
+                    // Clear form fields after successful creation
+                    setContent("");
+                    setTitle("");
+                } else {
+                    alert("Failed to make plant.");
+                }
+                getPlants();
+            })
+            .catch((err) => alert(err));
+    };
+
+    const updatePlant = (id, newTitle, newContent) => {
+        api
+            .put(`/api/plants/${id}/`, { title: newTitle, content: newContent })
+            .then((res) => {
+                if (res.status === 200) alert("Plant updated!");
+                else alert("Failed to update plant.");
                 getPlants();
             })
             .catch((err) => alert(err));
@@ -51,7 +68,7 @@ function MyGarden() {
             <div>
                 <h1>My Garden Plants</h1>
                 {plants.map((plant) => (
-                    <Plant plant={plant} onDelete={deletePlant} key={plant.id} />
+                    <Plant plant={plant} onDelete={deletePlant} onUpdate={updatePlant} key={plant.id} />
                 ))}
             </div>
             <h2>Create a Plant</h2>

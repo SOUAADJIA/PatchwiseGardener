@@ -1,49 +1,95 @@
+/* Plant.css */
 .plant-container {
-  padding: 15px;
-  margin: 20px 0;
   border: 1px solid #ccc;
-  border-radius: 8px;
-  background-color: #f9f9f9;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  transition: box-shadow 0.3s, transform 0.3s;
-}
-
-.plant-container:hover {
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  transform: scale(1.02);
+  padding: 15px;
+  margin-bottom: 20px;
+  border-radius: 5px;
+  background-color: #f5f5f5;
 }
 
 .plant-title {
-  font-size: 1.5rem;
-  color: #333;
-  margin-bottom: 10px;
-  font-weight: bold;
+  font-weight: bold; /* Make plant titles bold */
+  color: #2e8b57; /* Green color for plant titles */
 }
 
 .plant-content {
-  font-size: 1rem;
-  color: #666;
-  margin-bottom: 10px;
+  color: #333;
 }
 
 .plant-date {
-  font-size: 0.8rem;
-  color: #999;
-  margin-bottom: 10px;
+  color: #777;
+  font-style: italic;
 }
 
 .delete-button {
-  background-color: #f44336; /* Red */
+  background-color: #f44336;
   color: white;
   border: none;
-  padding: 10px 20px;
+  padding: 8px 16px;
   border-radius: 5px;
   cursor: pointer;
-  font-size: 1rem;
+  font-size: 0.9rem;
   transition: background-color 0.3s, transform 0.3s;
+  display: inline-block;
 }
 
 .delete-button:hover {
-  background-color: #d32f2f; /* Darker red */
+  background-color: #d32f2f;
   transform: scale(1.05);
+}
+
+.edit-button {
+  background-color: dodgerblue;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: background-color 0.3s, transform 0.3s;
+  display: inline-block;
+}
+
+.edit-button:hover {
+  background-color: #0056b3;
+  transform: scale(1.05);
+}
+
+.save-button {
+  background-color: #4caf50; /* Green color for save button */
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: background-color 0.3s, transform 0.3s;
+  display: inline-block;
+}
+
+.save-button:hover {
+  background-color: #388e3c;
+  transform: scale(1.05);
+}
+
+.cancel-button {
+  background-color: #9e9e9e; /* Grey color for cancel button */
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: background-color 0.3s, transform 0.3s;
+  display: inline-block;
+}
+
+.cancel-button:hover {
+  background-color: #616161;
+  transform: scale(1.05);
+}
+
+.button-container {
+  display: flex;
+  gap: 10px;
 }
