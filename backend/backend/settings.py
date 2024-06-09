@@ -47,6 +47,8 @@ SIMPLE_JWT = {
     "REFRESH_TOKEN_LIFETIME": timedelta(days=1),
 }
 
+PERENUAL_API_KEY = os.getenv('PERENUAL_API_KEY')
+
 # Application definition
 
 INSTALLED_APPS = [
@@ -104,9 +106,6 @@ DATABASES = {
     }
 }
 
-#PERENUAL_API_KEY = 'sk-vJ4U665e37dbaf8045222'
-#PERENUAL_API_KEY = 'sk-q0oP665e38c6f32b55785'
-PERENUAL_API_KEY = 'sk-PpC366611835422395824'
 
 
 

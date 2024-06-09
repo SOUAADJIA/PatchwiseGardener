@@ -4,6 +4,7 @@ import Login from "./pages/Login";
 import Register from "./pages/Register";
 import Home from "./pages/Home";
 import Plants from "./pages/Plants";
+import CareGuides from "./pages/CareGuides.jsx";
 import MyGarden from "./pages/MyGarden";
 import NotFound from "./pages/NotFound";
 import ProtectedRoute from "./components/ProtectedRoute";
@@ -31,7 +32,7 @@ function App() {
   }, []);
 
   return (
-    <BrowserRouter basename="/PatchwiseGardener">
+    <BrowserRouter>
       <MenuBar />
       <Routes>
         <Route path="/" element={<Navigate to="/home" />} />
@@ -53,6 +54,7 @@ function App() {
           }
         />
         <Route path="/plants" element={<Plants />} />
+        <Route path="/care-guides/:speciesId" element={<CareGuides />} /> 
         <Route path="/plant-disease" element={<PlantDisease />} />
         <Route path="/faq" element={<FAQ />} />
         <Route path="/login" element={<Login />} />

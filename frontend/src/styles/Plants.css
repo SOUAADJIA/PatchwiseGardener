@@ -61,18 +61,36 @@ h1 {
   margin: 5px 0;
 }
 
-.plant-card button {
-  background-color: #4CAF50;
+/* Plant card button styling */
+.plant-card button.details-btn {
+  background-color: #4CAF50; /* Details button color */
   color: white;
   border: none;
   padding: 10px;
   border-radius: 5px;
   cursor: pointer;
   transition: background-color 0.3s ease;
+  margin-top: 10px; /* Add margin to separate buttons */
+  margin-right: 20px;
+}
+
+.plant-card button.care-guide-btn {
+  background-color: #007bff; /* Care Guide button color */
+  color: white;
+  border: none;
+  padding: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-top: 10px; /* Add margin to separate buttons */
 }
 
 .plant-card button:hover {
   background-color: #45a049;
+}
+
+.plant-card button.care-guide-btn:hover {
+  background-color: #0056b3; /* Adjust hover color for Care Guide button */
 }
 
 /* Modal styling */

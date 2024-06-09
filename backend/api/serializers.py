@@ -67,6 +67,13 @@ class SpeciesSerializer(serializers.ModelSerializer):
             'images'
         ]
 
+class PlantGuideSerializer(serializers.ModelSerializer):
+    id = serializers.IntegerField()
+    name = serializers.CharField()
+    type = serializers.CharField()
+    content = serializers.CharField()
+    
+
 class PlantDiseaseSerializer(serializers.ModelSerializer):
     class Meta:
         model = PlantDisease

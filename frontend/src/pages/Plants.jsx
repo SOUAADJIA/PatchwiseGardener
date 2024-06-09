@@ -11,6 +11,7 @@ function Plants() {
   const [error, setError] = useState(null);
   const [currentPage, setCurrentPage] = useState(1);
   const [selectedSpecies, setSelectedSpecies] = useState(null);
+
   const itemsPerPage = 30;
   const totalPages = Math.ceil(3000 / itemsPerPage);
 
@@ -43,6 +44,10 @@ function Plants() {
     }
   };
 
+  const handleCareGuideClick = (id) => {
+    window.location.href = `/care-guides/${id}`;
+  };
+
   const closeModal = () => {
     setSelectedSpecies(null);
   };
@@ -61,11 +66,12 @@ function Plants() {
       <div className="plants-list">
         {plants.map((plant) => (
           <div key={plant.id} className="plant-card">
-            <h2>{plant.common_name}</h2>
-            {plant.scientific_name && <p><i>{plant.scientific_name.join(", ")}</i></p>}
-            {plant.default_image && <img src={plant.default_image.thumbnail} alt={plant.common_name} />}
-            <button onClick={() => handleDetailsClick(plant.id)}>Details</button>
-          </div>
+          <h2>{plant.common_name}</h2>
+          {plant.scientific_name && <p><i>{plant.scientific_name.join(", ")}</i></p>}
+          {plant.default_image && <img src={plant.default_image.thumbnail} alt={plant.common_name} />}
+          <button className="details-btn" onClick={() => handleDetailsClick(plant.id)}>Details</button>
+          <button className="care-guide-btn" onClick={() => handleCareGuideClick(plant.id)}>Care Guide</button> {/* New button for Care Guide */}
+        </div>
         ))}
       </div>
       <div className="pagination">
@@ -108,7 +114,6 @@ function Plants() {
           <p><strong>Hardiness Location:</strong> <a href={selectedSpecies.hardiness_location.full_url} target="_blank" rel="noopener noreferrer">View Map</a></p>
           <p><strong>Pruning Month:</strong> {selectedSpecies.pruning_month.join(", ")}</p>
           <p><strong>Seeds:</strong> {selectedSpecies.seeds ? "Yes" : "No"}</p>
-          <p><strong>Care Guides:</strong> <a href={selectedSpecies["care-guides"]} target="_blank" rel="noopener noreferrer">View Care Guides</a></p>
           <p><strong>Indoor:</strong> {selectedSpecies.indoor ? "Yes" : "No"}</p>
           <p><strong>Cuisine:</strong> {selectedSpecies.cuisine ? "Yes" : "No"}</p>
           <p><strong>Medicinal:</strong> {selectedSpecies.medicinal ? "Yes" : "No"}</p>
@@ -117,10 +122,6 @@ function Plants() {
           <p><strong>Sun:</strong> {selectedSpecies.sunlight.join(", ")}</p>
           <p><strong>Cones:</strong> {selectedSpecies.cones ? "Yes" : "No"}</p>
           <p><strong>Leaf:</strong> {selectedSpecies.leaf ? "Yes" : "No"}</p>
-          <p><strong>Leaf Color:</strong> {selectedSpecies.leaf_color.join(", ")}</p>
-          <p><strong>Growth Rate:</strong> {selectedSpecies.growth_rate}</p>
-          <p><strong>Care Level:</strong> {selectedSpecies.care_level}</p>
-          <button onClick={closeModal}>Close</button>
         </Modal>
       )}
     </div>
