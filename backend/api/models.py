@@ -53,12 +53,7 @@ class Species(models.Model):
 
     def __str__(self):
         return self.common_name
-
-
-
-
-
-
+    
 class PlantDisease(models.Model):
     common_name = models.CharField(max_length=255)
     scientific_name = models.CharField(max_length=255, blank=True, null=True)
@@ -75,3 +70,12 @@ class FAQ(models.Model):
 
     def __str__(self):
         return self.question
+
+class PlantGuide(models.Model):
+    species = models.ForeignKey(Species, on_delete=models.CASCADE, related_name="guides")
+    title = models.CharField(max_length=255)
+    description = models.TextField(blank=True, null=True)
+    type = models.CharField(max_length=255, blank=True, null=True)
+
+    def __str__(self):
+        return f"{self.species.common_name} - {self.title}"

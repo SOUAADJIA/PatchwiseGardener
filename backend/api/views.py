@@ -2,9 +2,9 @@ from django.shortcuts import render
 from django.conf import settings
 from django.contrib.auth.models import User
 from rest_framework import generics
-from .serializers import UserSerializer, PlantSerializer, PostSerializer, CommentSerializer
+from .serializers import UserSerializer, PlantSerializer, PostSerializer, CommentSerializer, PlantGuideSerializer
 from rest_framework.permissions import IsAuthenticated, AllowAny, IsAuthenticatedOrReadOnly
-from .models import Plant, Post, Comment
+from .models import Plant, Post, Comment, PlantGuide
 from .permissions import IsAuthorOrReadOnly  # Import the custom permission
 
 import requests
@@ -205,3 +205,77 @@ class FAQListView(generics.ListAPIView):
             )
 
         return Response(data['data'])
+
+#Guide view
+class PlantGuideListView(generics.ListAPIView):
+    queryset = PlantGuide.objects.all()
+    serializer_class = PlantGuideSerializer
+    permission_classes = [AllowAny]
+
+    def get(self, request, *args, **kwargs):
+        api_key = settings.PERENUAL_API_KEY
+        page = request.GET.get('page', 1)
+        # Make request to external API
+        url = f"https://perenual.com/api/species-care-guide-list?key={api_key}&page={page}"
+        response = requests.get(url)
+        data = response.json()
+
+        for item in data.get('data', []):
+            species, created = Species.objects.get_or_create(
+                id=item['species_id'],  # Assuming 'species_id' is provided by the external API
+                defaults={
+                    'common_name': item['common_name'],
+                    'scientific_name': item['scientific_name'],
+                }
+            )
+
+            for section in item.get('section', []):
+                PlantGuide.objects.update_or_create(
+                    species=species,
+                    title=section.get('type', 'N/A'),  # Safely get 'type' or use 'N/A'
+                    defaults={
+                        'description': section.get('description', ''),
+                        'type': section.get('type', ''),
+                    }
+                )
+
+        return Response(data.get('data', []))
+
+class PlantGuideDetailView(generics.RetrieveAPIView):
+    queryset = PlantGuide.objects.all()
+    serializer_class = PlantGuideSerializer
+    lookup_field = 'pk'
+    permission_classes = [AllowAny]
+
+    def get(self, request, *args, **kwargs):
+        api_key = settings.PERENUAL_API_KEY
+        species_id = kwargs.get('pk')
+        # Make request to external API for specific species_id
+        url = f"https://perenual.com/api/species-care-guide-list?key={api_key}&species_id={species_id}"
+        response = requests.get(url)
+        data = response.json()
+
+        species_data = data.get('data', [])
+        if species_data:
+            item = species_data[0]
+            species, created = Species.objects.get_or_create(
+                id=item['species_id'],
+                defaults={
+                    'common_name': item['common_name'],
+                    'scientific_name': item['scientific_name'],
+                }
+            )
+
+            for section in item.get('section', []):
+                PlantGuide.objects.update_or_create(
+                    species=species,
+                    title=section.get('type', 'N/A'),  # Safely get 'type' or use 'N/A'
+                    defaults={
+                        'description': section.get('description', ''),
+                        'type': section.get('type', ''),
+                    }
+                )
+
+        return Response(species_data)
+
+    
