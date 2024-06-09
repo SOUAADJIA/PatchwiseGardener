@@ -67,17 +67,20 @@ class SpeciesSerializer(serializers.ModelSerializer):
             'images'
         ]
 
+class PlantGuideSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = PlantGuide
+        fields = ['id', 'species', 'title', 'description', 'type']
+
+        
 class PlantDiseaseSerializer(serializers.ModelSerializer):
     class Meta:
         model = PlantDisease
         fields = ['id', 'common_name', 'scientific_name', 'description', 'symptoms', 'control_methods']
+
 
 class FAQSerializer(serializers.ModelSerializer):
     class Meta:
         model = FAQ
         fields = ['id', 'question', 'answer']
 
-class PlantGuideSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = PlantGuide
-        fields = ['id', 'species', 'title', 'description', 'type']

@@ -1,7 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 
-
+#Plant model
 class Plant(models.Model):
     title = models.CharField(max_length=100)
     content = models.TextField()
@@ -11,6 +11,7 @@ class Plant(models.Model):
     def __str__(self):
         return self.title
 
+#Post model
 
 class Post(models.Model):
     title = models.CharField(max_length=200)
@@ -20,6 +21,8 @@ class Post(models.Model):
 
     def __str__(self):
         return self.title
+    
+#Comment model
 
 class Comment(models.Model):
     post = models.ForeignKey(Post, on_delete=models.CASCADE, related_name="comments")
@@ -30,6 +33,7 @@ class Comment(models.Model):
     def __str__(self):
         return f"Comment by {self.author.username} on {self.post.title}"
 
+#Species model
 
 class Species(models.Model):
     common_name = models.CharField(max_length=255)
@@ -53,23 +57,8 @@ class Species(models.Model):
 
     def __str__(self):
         return self.common_name
-    
-class PlantDisease(models.Model):
-    common_name = models.CharField(max_length=255)
-    scientific_name = models.CharField(max_length=255, blank=True, null=True)
-    description = models.TextField(blank=True, null=True)
-    symptoms = models.TextField(blank=True, null=True)
-    control_methods = models.TextField(blank=True, null=True)
 
-    def __str__(self):
-        return self.common_name
-
-class FAQ(models.Model):
-    question = models.CharField(max_length=255)
-    answer = models.TextField()
-
-    def __str__(self):
-        return self.question
+#Guide model
 
 class PlantGuide(models.Model):
     species = models.ForeignKey(Species, on_delete=models.CASCADE, related_name="guides")
@@ -79,3 +68,26 @@ class PlantGuide(models.Model):
 
     def __str__(self):
         return f"{self.species.common_name} - {self.title}"
+
+#Desiese model
+
+class PlantDisease(models.Model):
+    common_name = models.CharField(max_length=255)
+    scientific_name = models.CharField(max_length=255, blank=True, null=True)
+    description = models.TextField(blank=True, null=True)
+    symptoms = models.TextField(blank=True, null=True)
+    control_methods = models.TextField(blank=True, null=True)
+
+    def __str__(self):
+        return self.common_name
+    
+#FAQ model
+
+class FAQ(models.Model):
+    question = models.CharField(max_length=255)
+    answer = models.TextField()
+
+    def __str__(self):
+        return self.question
+
+

@@ -150,62 +150,6 @@ class SpeciesDetailView(generics.RetrieveAPIView):
 
         return Response(data)
     
-
-# Plant Disease views
-class PlantDiseaseListView(generics.ListAPIView):
-    queryset = PlantDisease.objects.all()
-    serializer_class = PlantDiseaseSerializer
-    permission_classes = [AllowAny]
-
-    def get(self, request, *args, **kwargs):
-        api_key = settings.PERENUAL_API_KEY
-        page = request.GET.get('page', 1)
-        q = request.GET.get('q')
-
-        url = f"https://perenual.com/api/pest-disease-list?key={api_key}&page={page}"
-        if q:
-            url += f"&q={q}"
-
-        response = requests.get(url)
-        data = response.json()
-
-        for item in data['data']:
-            PlantDisease.objects.get_or_create(
-                common_name=item['common_name'],
-                scientific_name=item.get('scientific_name', None),
-                description=item.get('description', None),
-                symptoms=item.get('symptoms', None),
-                control_methods=item.get('control_methods', None),
-            )
-
-        return Response(data['data'])
-
-# FAQ views
-class FAQListView(generics.ListAPIView):
-    queryset = FAQ.objects.all()
-    serializer_class = FAQSerializer
-    permission_classes = [AllowAny]
-
-    def get(self, request, *args, **kwargs):
-        api_key = settings.PERENUAL_API_KEY
-        page = request.GET.get('page', 1)
-        q = request.GET.get('q')
-
-        url = f"https://perenual.com/api/article-faq-list?key={api_key}&page={page}"
-        if q:
-            url += f"&q={q}"
-
-        response = requests.get(url)
-        data = response.json()
-
-        for item in data['data']:
-            FAQ.objects.get_or_create(
-                question=item['question'],
-                answer=item['answer']
-            )
-
-        return Response(data['data'])
-
 #Guide view
 class PlantGuideListView(generics.ListAPIView):
     queryset = PlantGuide.objects.all()
@@ -277,5 +221,65 @@ class PlantGuideDetailView(generics.RetrieveAPIView):
                 )
 
         return Response(species_data)
+
+
+# Plant Disease views
+
+class PlantDiseaseListView(generics.ListAPIView):
+    queryset = PlantDisease.objects.all()
+    serializer_class = PlantDiseaseSerializer
+    permission_classes = [AllowAny]
+
+    def get(self, request, *args, **kwargs):
+        api_key = settings.PERENUAL_API_KEY
+        page = request.GET.get('page', 1)
+        q = request.GET.get('q')
+
+        url = f"https://perenual.com/api/pest-disease-list?key={api_key}&page={page}"
+        if q:
+            url += f"&q={q}"
+
+        response = requests.get(url)
+        data = response.json()
+
+        for item in data['data']:
+            PlantDisease.objects.get_or_create(
+                common_name=item['common_name'],
+                scientific_name=item.get('scientific_name', None),
+                description=item.get('description', None),
+                symptoms=item.get('symptoms', None),
+                control_methods=item.get('control_methods', None),
+            )
+
+        return Response(data['data'])
+
+
+# FAQ views
+
+class FAQListView(generics.ListAPIView):
+    queryset = FAQ.objects.all()
+    serializer_class = FAQSerializer
+    permission_classes = [AllowAny]
+
+    def get(self, request, *args, **kwargs):
+        api_key = settings.PERENUAL_API_KEY
+        page = request.GET.get('page', 1)
+        q = request.GET.get('q')
+
+        url = f"https://perenual.com/api/article-faq-list?key={api_key}&page={page}"
+        if q:
+            url += f"&q={q}"
+
+        response = requests.get(url)
+        data = response.json()
+
+        for item in data['data']:
+            FAQ.objects.get_or_create(
+                question=item['question'],
+                answer=item['answer']
+            )
+
+        return Response(data['data'])
+
 
     
