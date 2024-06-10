@@ -17,7 +17,7 @@ PatchwiseGardener is your personalized gardening web application, perfect for ho
 
 ### Frontend
 
-- **Languages:** HTML, CSS, JavaScript, JSX
+- **Languages:** HTML, CSS, JavaScript(also JSX)
 - **Libraries/Frameworks:** React.js with VITE
 
 ### Backend
