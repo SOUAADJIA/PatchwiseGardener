@@ -1,9 +1,9 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
-import logo from "../assets/logo.png"; 
-import "../styles/MenuBar.css"; 
+import logo from "../assets/logo.png";
+import "../styles/MenuBar.css";
 
-function MenuBar() {
+function MenuBar({ isAuthenticated }) {
   return (
     <div className="home-container">
       <div className="menu-bar">
@@ -18,11 +18,11 @@ function MenuBar() {
           <li><NavLink to="/plant-disease" activeClassName="active">Plant Disease</NavLink></li>
           <li><NavLink to="/faq" activeClassName="active">FAQ</NavLink></li>
           <li><NavLink to="/community" activeClassName="active">Community</NavLink></li>
-          <li><NavLink to="/login" activeClassName="active" className="login-button">Log In</NavLink></li>
-          <li><NavLink to="/logout" activeClassName="active">Log Out</NavLink></li>
+          {!isAuthenticated && <li><NavLink to="/login" activeClassName="active" className="login-button">Log In</NavLink></li>}
+          {isAuthenticated && <li><NavLink to="/logout" activeClassName="active" className="logout-button">Log Out</NavLink></li>}
         </ul>
       </div>
-      </div>
+    </div>
   );
 }
 

@@ -1,15 +1,15 @@
 import React from "react";
 import Form from "../components/Form";
 import { NavLink } from "react-router-dom";
-import "../styles/Login.css"; 
+import "../styles/Login.css";
 
-function Login() {
+function Login({ setIsAuthenticated }) {
   return (
     <div className="home-container">
       <div className="login-container">
         <div className="login-background">
           <div className="form-wrapper">
-            <Form route="/api/token/" method="login" />
+            <Form route="/api/token/" method="login" setIsAuthenticated={setIsAuthenticated} />
             <div className="signup-link-container">
               <p>Don't have an account?</p>
               <NavLink to="/register" className="signup-link">Sign Up</NavLink>

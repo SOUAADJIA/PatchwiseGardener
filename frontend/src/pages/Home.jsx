@@ -37,13 +37,13 @@ function Home() {
           <div className="link-item">
             <NavLink to="/plant-disease">
               <img src={diseaseImage} alt="Disease" />
-              <p>Disease</p>
+              <p>Plant Diseases</p>
             </NavLink>
           </div>
           <div className="link-item">
             <NavLink to="/faq">
               <img src={faqImage} alt="FAQ" />
-              <p>FAQ</p>
+              <p>Plants - Frequently Asked uestions</p>
             </NavLink>
           </div>
         </div>
@@ -60,7 +60,7 @@ function Home() {
           Plants will stop photosynthesizing and most plants will close their stomata. 
           However, plants still stay active during the night and some plants will even open their stomata at night.
           </p>
-          <p>- Souaad OULED-JIA</p>
+          <p>- Souaad </p>
         </div>
         <div className="post-comments">
           Comments
@@ -78,7 +78,7 @@ function Home() {
             that plants can hear for example running water, pests, pollinators, and possibly even other
              plants.
           </p>
-          <p>- Test</p>
+          <p>- Test 1</p>
         </div>
         <div className="post-comments">
           Comments

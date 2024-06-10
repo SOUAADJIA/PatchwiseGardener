@@ -63,3 +63,15 @@
   background-color: #218838;
   color: #fff;
 }
+
+.nav-links .logout-button {
+  background-color: #dc3545; /* Red color */
+  color: #fff;
+  border: 2px solid #dc3545; /* Border color same as background */
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.nav-links .logout-button:hover {
+  background-color: #c82333; /* Darker red color on hover */
+  color: #fff;
+}

@@ -13,8 +13,12 @@ import PlantDisease from "./pages/PlantDisease";
 import FAQ from "./pages/FAQ";
 import MenuBar from "./components/MenuBar";
 
-function Logout() {
-  localStorage.clear();
+function Logout({ setIsAuthenticated }) {
+  useEffect(() => {
+    localStorage.clear();
+    setIsAuthenticated(false);
+  }, [setIsAuthenticated]);
+
   return <Navigate to="/login" />;
 }
 
@@ -33,7 +37,7 @@ function App() {
 
   return (
     <BrowserRouter>
-      <MenuBar />
+      <MenuBar isAuthenticated={isAuthenticated} />
       <Routes>
         <Route path="/" element={<Navigate to="/home" />} />
         <Route path="/home" element={<Home />} />
@@ -54,11 +58,11 @@ function App() {
           }
         />
         <Route path="/plants" element={<Plants />} />
-        <Route path="/care-guides/:speciesId" element={<CareGuides />} /> 
+        <Route path="/care-guides/:speciesId" element={<CareGuides />} />
         <Route path="/plant-disease" element={<PlantDisease />} />
         <Route path="/faq" element={<FAQ />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/logout" element={<Logout />} />
+        <Route path="/login" element={<Login setIsAuthenticated={setIsAuthenticated} />} />
+        <Route path="/logout" element={<Logout setIsAuthenticated={setIsAuthenticated} />} />
         <Route path="/register" element={<RegisterAndLogout />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
