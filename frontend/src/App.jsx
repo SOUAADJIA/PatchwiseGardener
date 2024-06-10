@@ -12,6 +12,7 @@ import Community from "./pages/Community";
 import PlantDisease from "./pages/PlantDisease";
 import FAQ from "./pages/FAQ";
 import MenuBar from "./components/MenuBar";
+import Footer from "./components/Footer";
 
 function Logout({ setIsAuthenticated }) {
   useEffect(() => {
@@ -36,7 +37,7 @@ function App() {
   }, []);
 
   return (
-    <BrowserRouter>
+    <BrowserRouter> {/* Add MenuBar component here */}
       <MenuBar isAuthenticated={isAuthenticated} />
       <Routes>
         <Route path="/" element={<Navigate to="/home" />} />
@@ -66,7 +67,9 @@ function App() {
         <Route path="/register" element={<RegisterAndLogout />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
+      <Footer /> {/* Add Footer component here */}
     </BrowserRouter>
+    
   );
 }
 
