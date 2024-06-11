@@ -7,10 +7,20 @@ class Plant(models.Model):
     content = models.TextField()
     created_at = models.DateTimeField(auto_now_add=True)
     author = models.ForeignKey(User, on_delete=models.CASCADE, related_name="plants")
+    planting_date = models.DateTimeField(blank=True, null=True)
+    last_watered_date = models.DateTimeField(blank=True, null=True)
+    last_sunlight_exposure_date = models.DateTimeField(blank=True, null=True)
+    last_pruning_date = models.DateTimeField(blank=True, null=True)
+    last_fertilizing_date = models.DateTimeField(blank=True, null=True)
+    
+    # Reminders with periods
+    watering_reminder_period = models.DurationField(blank=True, null=True)
+    sunlight_exposure_reminder_period = models.DurationField(blank=True, null=True)
+    pruning_reminder_period = models.DurationField(blank=True, null=True)
+    fertilizing_reminder_period = models.DurationField(blank=True, null=True)
 
     def __str__(self):
         return self.title
-
 #Post model
 
 class Post(models.Model):

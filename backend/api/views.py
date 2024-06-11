@@ -39,6 +39,12 @@ class PlantRetrieveUpdateDestroy(generics.RetrieveUpdateDestroyAPIView):
         user = self.request.user
         return Plant.objects.filter(author=user)
 
+    def perform_update(self, serializer):
+        instance = serializer.save()
+
+        # Perform additional tasks after updating the plant instance
+       
+
 # Post views
 class PostListCreate(generics.ListCreateAPIView):
     queryset = Post.objects.all()

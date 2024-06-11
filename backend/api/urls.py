@@ -5,9 +5,9 @@ from .views import SpeciesListView, SpeciesDetailView, PlantDiseaseListView, FAQ
 urlpatterns = [
     path("plants/", views.PlantListCreate.as_view(), name="list-create-plant"),
     path("plants/<int:pk>/", views.PlantRetrieveUpdateDestroy.as_view(), name="retrieve-update-destroy-plant"),
-    path("posts/", views.PostListCreate.as_view(), name="post-list"),
     path("plant-guides/", views.PlantGuideListView.as_view(), name="plant-guide-list"),
     path("plant-guides/<int:pk>/", views.PlantGuideDetailView.as_view(), name="plant-guide-detail"),
+    path("posts/", views.PostListCreate.as_view(), name="post-list"),
     path("posts/<int:pk>/", views.PostRetrieveUpdateDestroy.as_view(), name="post-detail"),
     path("posts/delete/<int:pk>/", views.PostRetrieveUpdateDestroy.as_view(), name="delete-post"),
     path("comments/", views.CommentListCreate.as_view(), name="comment-list"),

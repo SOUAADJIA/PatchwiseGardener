@@ -22,7 +22,11 @@ class UserSerializer(serializers.ModelSerializer):
 class PlantSerializer(serializers.ModelSerializer):
     class Meta:
         model = Plant
-        fields = ["id", "title", "content", "created_at", "author"]
+        fields = ["id", "title", "content", "created_at", "author", 
+                  "planting_date", "last_watered_date", "last_sunlight_exposure_date",
+                  "last_pruning_date", "last_fertilizing_date", "watering_reminder_period",
+                  "sunlight_exposure_reminder_period", "pruning_reminder_period",
+                  "fertilizing_reminder_period"]
         extra_kwargs = {"author": {"read_only": True}}
 
 
