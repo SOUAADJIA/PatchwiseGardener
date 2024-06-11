@@ -1,5 +1,7 @@
 # PatchwiseGardener
 
+![PatchwiseGardener Screenshot](/frontend/src/assets/logo.png)
+
 **Tagline:** Cultivate Your Green Genius, Wherever You Browse
 
 ## Description
@@ -10,7 +12,7 @@ PatchwiseGardener is your personalized gardening web application, perfect for ho
 
 - **SOUAAD OULED-JIA**
   - **Role:** Software Engineer
-  - **Responsibilities:** Designing, developing, and testing the web application.
+  - **Responsibilities:** Designing, developing, testing and deploying the web application.
   - **Reasoning:** As the project owner and primary developer, taking on the role of a software engineer allows for direct involvement in all aspects of the project's implementation.
 
 ## Technologies Used
@@ -23,7 +25,7 @@ PatchwiseGardener is your personalized gardening web application, perfect for ho
 ### Backend
 
 - **Languages/Frameworks:** Python, Django
-- **Database:** PostgreSQL , SQLite3
+- **Database:** SQLite3, PostgreSQL(deployment side)
 - **Framework for API Development:** Django Rest Framework (DRF)
 
 ## External API
